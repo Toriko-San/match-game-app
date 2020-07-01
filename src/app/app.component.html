@@ -1,0 +1,27 @@
+<p>Player one:
+<mat-button-toggle-group [disabled]="canPlay" #groupOne="matButtonToggleGroup">
+  <mat-button-toggle [disabled]="matches.length < 1"(change)="playGame('PlayerOne',$event)" value="1">1
+  </mat-button-toggle>
+  <mat-button-toggle [disabled]="matches.length < 2" (change)="playGame('PlayerOne',$event)" value="2">2
+  </mat-button-toggle>
+  <mat-button-toggle [disabled]="matches.length < 3" (change)="playGame('PlayerOne',$event)" value="3">3
+  </mat-button-toggle>
+</mat-button-toggle-group>
+</p>
+
+
+<p>Player Two:
+<mat-button-toggle-group [disabled]="!canPlay" #groupTwo="matButtonToggleGroup">
+  <mat-button-toggle [disabled]="matches.length < 1"  (change)="playGame('PlayerTwo',$event)" value="1">1
+  </mat-button-toggle>
+  <mat-button-toggle [disabled]="matches.length < 2" (change)="playGame('PlayerTwo',$event)" value="2">2
+  </mat-button-toggle>
+  <mat-button-toggle [disabled]="matches.length < 3" (change)="playGame('PlayerTwo',$event)" value="3">3
+  </mat-button-toggle>
+</mat-button-toggle-group>
+</p>
+
+<span *ngIf="messageWinner">{{messageText}}</span>
+<div *ngIf="messageWinner"><mat-button-toggle (change)="reset()" >Reset game</mat-button-toggle></div>
+
+<img  *ngFor="let match of matches"  src="../assets/images/TestAllumette.png" height="10%" width="1%">
