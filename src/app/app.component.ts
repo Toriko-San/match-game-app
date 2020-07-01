@@ -11,12 +11,16 @@ export class AppComponent implements OnInit {
 
   title = 'match-game-app';
 
+  // To switch between player One and Two
   canPlay: boolean;
-  messageWinner: boolean;
+  // Array than "contains" matches
   matches: Array<number>;
+
+  messageWinner: boolean;
   messageText: string;
 
   ngOnInit(): void {
+    // Intialize the number of matches for the game
     this.matches = Array(20).fill(0);
     this.canPlay = false;
     this.messageWinner = false;
@@ -31,7 +35,9 @@ export class AppComponent implements OnInit {
       this.matches.length = 0;
     }
 
+    // To Reset  the toggle buttons when clicked
     event.source.buttonToggleGroup.value = null;
+    // To switch to the next player
     this.canPlay = !this.canPlay;
 
     if (this.matches.length === 0){
@@ -46,6 +52,7 @@ export class AppComponent implements OnInit {
 
   }
 
+  // When the game ends, the players can reset the matches
   reset(): void{
     this.matches = Array(20).fill(0);
     this.messageWinner = false;
